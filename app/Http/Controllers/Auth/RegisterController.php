@@ -76,10 +76,12 @@ class RegisterController extends Controller
             'dob' => $data['dob'],
        
         ]);
+
         $wallet = Wallet::create([
-            'user_id' => $data[$user->id],
-            'balance' => $data[0]
+            'user_id' => $user->id,
+            'balance' => 0
         ]);
+
         return $user;
     }
 }

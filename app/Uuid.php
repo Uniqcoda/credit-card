@@ -6,7 +6,7 @@ use Illuminate\Support\Str;
 
 trait Uuid
 {
-    protected static function bootUsesUuid()
+    protected static function bootUuid()
     {
         static::creating(function ($model) {
             if (! $model->getKey()) {
