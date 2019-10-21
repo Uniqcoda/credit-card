@@ -16,10 +16,9 @@ class CreateCardsTable extends Migration
         Schema::create('cards', function (Blueprint $table) {
             $table->uuid('id')->primary();
             $table->uuid('user_id');
-            $table->string('brand');
+            $table->enum('brand', array('master_card', 'visa_card', 'verve_card', 'others'));
             $table->string('card_number', 16)->unique();
-            $table->timestamp('date_from');
-            $table->timestamp('date_to');
+            $table->timestamp('expire_at');
             $table->timestamps();
            
         });

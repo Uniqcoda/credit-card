@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->string('phone', 12);
-            $table->date('dob');
-            $table->enum('role', UserRolesInterface::ROLES)->default(UserRolesInterface::ROLE_CUSTOMER)->index();
+            $table->string('dob');
+            $table->enum('role', array('admin', 'customer'));
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
@@ -39,12 +39,3 @@ class CreateUsersTable extends Migration
     }
 }
 
-interface UserRolesInterface
-{
-   const ROLE_ADMIN = 'admin';
-   const ROLE_CUSTOMER = 'customer';
-   const ROLES = [
-      self::ROLE_ADMIN,
-      self::ROLE_CUSTOMER,
-   ];
-}
