@@ -18,6 +18,8 @@ class CreateWalletsTable extends Migration
             $table->uuid('user_id');
             $table->double('balance');
             $table->timestamps();
+
+            $table->index('user_id');
         });
     }
 

@@ -7,14 +7,20 @@
             <div class="card">
                 <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
+                <div class="card-body  d-flex  justify-content-between">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
 
-                    You are logged in!
+                    Welcome, What would you like to do?
+
+                    <div class='links justify-content-between'>
+                    <a href="#">Edit Profile</a>
+                    |
+                    <a href="https://blog.laravel.com">Add New Card</a>
+                    </div>
                 </div>
             </div>
         </div>
