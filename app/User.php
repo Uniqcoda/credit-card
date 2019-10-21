@@ -41,5 +41,8 @@ class User extends Authenticatable
     public function cards(){
         return $this->hasMany(Card::class);
     }
-    
+        // Get the wallet record associated with the user.
+        public function wallet(){
+            return $this->hasOne(Wallet::class);
+        }
 }
