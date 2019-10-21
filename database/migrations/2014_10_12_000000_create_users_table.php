@@ -1,21 +1,8 @@
 <?php
 // trying to create enum for user type
-namespace abenevaut\Infrastructure\Interfaces\Domain\Users\Users;
-interface UserRolesInterface
-{
-   const ROLE_ADMIN = 'admin';
-   const ROLE_CUSTOMER = 'customer';
-   const ROLES = [
-      self::ROLE_ADMIN,
-      self::ROLE_CUSTOMER,
-   ];
-}
-
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-// use
-use abenevaut\Infrastructure\Interfaces\Domain\Users\Users\UserRolesInterface;
 
 class CreateUsersTable extends Migration
 {
@@ -27,7 +14,7 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->uuid('id')->primary();
             $table->string('first_name');
             $table->string('last_name')->nullable();
             $table->string('email')->unique();
@@ -50,4 +37,14 @@ class CreateUsersTable extends Migration
     {
         Schema::dropIfExists('users');
     }
+}
+
+interface UserRolesInterface
+{
+   const ROLE_ADMIN = 'admin';
+   const ROLE_CUSTOMER = 'customer';
+   const ROLES = [
+      self::ROLE_ADMIN,
+      self::ROLE_CUSTOMER,
+   ];
 }
