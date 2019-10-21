@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+Auth::routes(); 
+
+Route::get('/card/create', 'CardsController@create');
+Route::post('/card', 'CardsController@store');
 
 Route::get('/home', 'HomeController@index')->name('home');
