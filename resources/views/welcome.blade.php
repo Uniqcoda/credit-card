@@ -81,7 +81,10 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                @php
+                $text = "Credit Card";
+                @endphp
+                    Welcome to {{ $text }}
                 </div>
 
                 <div class="links">
