@@ -18,6 +18,7 @@ class CreateCardsTable extends Migration
             $table->uuid('user_id');
             $table->enum('brand', array('master_card', 'visa_card', 'verve_card', 'others'));
             $table->string('card_number', 16)->unique();
+            $table->string('cvv');
             $table->timestamp('expire_at');
             $table->timestamps();
            
