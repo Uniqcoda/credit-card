@@ -12,9 +12,10 @@ class CardsController extends Controller
 
     public function store(){
         $data = request()->validate([
-'brand' => 'required',
-'card_number' => 'required',
-'expire_at' => 'required',
+            'brand' => 'required',
+            'card_number' => 'required',
+            'cvv' => 'required',
+            'expire_at' => 'required',
         ]);
 
         auth()->user()->cards()->create($data);

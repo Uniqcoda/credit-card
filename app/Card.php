@@ -14,7 +14,7 @@ class Card extends Model
  * @var array
  */
 protected $fillable = [
-    'user_id','brand', 'card_number', 'expire_at'
+    'user_id','brand', 'card_number', 'cvv', 'expire_at'
 ];
     // Get user that owns the card
     public function user(){
