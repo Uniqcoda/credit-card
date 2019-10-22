@@ -54,7 +54,7 @@
                                 <a class="nav-link" href="{{ url('/cards') }}">View Cards</a> 
                             </li>
                             <li>
-                                <a class="nav-link" href="{{ url('/cards/create') }}">Add Card</a>
+                                <a class="nav-link" href="{{ url('/card') }}">Add Card</a>
                             </li> 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -20,14 +20,17 @@ class CardsController extends Controller
     }
 
     public function store(){
-        $data = request()->validate([
+        $card = request()->validate([
             'brand' => 'required',
             'card_number' => 'required',
             'cvv' => 'required',
             'expire_at' => 'required',
         ]);
 
-        auth()->user()->cards()->create($data);
+        auth()->user()->cards()->create($card);
+        // throw an alert success message not yet working
+        // alert('Card added successfully');
+        return redirect('/cards');
     }
 
     public function show(){

@@ -17,8 +17,8 @@ Route::get('/', function () {
 
 Auth::routes(); 
 
-Route::get('/cards/create', 'CardsController@create');
-Route::post('/cards', 'CardsController@store');
+Route::get('/card', 'CardsController@create');
+Route::post('/card', 'CardsController@store');
 Route::get('/cards', 'CardsController@show');
 
 Route::get('/home', 'HomeController@index')->name('home');
