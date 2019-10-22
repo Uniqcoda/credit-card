@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('phone', 12);
             $table->string('dob');
-            $table->enum('role', array('admin', 'customer'));
+            $table->enum('role', array('customer', 'admin'))->default('customer');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
