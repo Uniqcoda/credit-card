@@ -19,7 +19,9 @@
                     <div class='links justify-content-between'>
                     <a href="#">Edit Profile</a>
                     |
-                    <a href="/card/create">Add New Card</a>
+                    <a href="/cards">View Cards</a>
+                    |
+                    <a href="/cards/create">Add New Card</a>
                     </div>
                 </div>
             </div>

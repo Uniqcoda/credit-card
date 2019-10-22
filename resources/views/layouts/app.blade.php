@@ -37,6 +37,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
+       
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
@@ -66,6 +67,12 @@
                                     </form>
                                 </div>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ url('/cards') }}">View Cards</a> 
+                            </li>
+                            <li>
+                                <a class="nav-link" href="{{ url('/cards/create') }}">Add Card</a>
+                            </li> 
                         @endguest
                     </ul>
                 </div>
