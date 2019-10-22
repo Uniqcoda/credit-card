@@ -27,7 +27,7 @@
             </div>
 
 {{-- Table of users --}}
-            <table class="table table-hover">
+            <table class="border table table-hover">
               <thead>
                 <tr>
                   <th scope="col">S/N</th>

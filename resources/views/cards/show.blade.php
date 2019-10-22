@@ -3,13 +3,13 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
-            <table class="table table-hover">
+        <div class=" col-md-10">
+            <table class="border table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">S/N</th>
                     <th scope="col">Brand</th>
-                    <th scope="col">Last 4</th>
+                    <th scope="col">Last 4 Digits</th>
                     <th scope="col">Expiry Date </th>
                     <th scope="col"> </th>
 
