@@ -11,6 +11,8 @@
                     <th scope="col">Brand</th>
                     <th scope="col">Last 4</th>
                     <th scope="col">Expiry Date </th>
+                    <th scope="col"> </th>
+
                   </tr>
                 </thead>
                 <tbody>
@@ -21,6 +23,9 @@
                   <td>{{$card->brand}}</td>
                     <td>{{$card->card_number}}</td>
                     <td>{{$card->expire_at}}</td>
+                    <td>
+                      <vue-button></vue-button>
+                    </td>
                   </tr>
                   @endforeach
                 </tbody>
