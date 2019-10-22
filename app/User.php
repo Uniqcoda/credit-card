@@ -8,7 +8,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, Uuid;
+
+    /**
+ * Indicates if the IDs are auto-incrementing.
+ *
+ * @var bool
+ */
+public $incrementing = false;
 
     /**
      * The attributes that are mass assignable.
@@ -36,4 +43,13 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Get the card record associated with the user.
+    public function cards(){
+        return $this->hasMany(Card::class);
+    }
+        // Get the wallet record associated with the user.
+        public function wallet(){
+            return $this->hasOne(Wallet::class);
+        }
 }
