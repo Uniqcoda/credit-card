@@ -4,7 +4,7 @@
 <div class="container">
 <div class="row">
   <div class="col-8 offset-2">
-    <form method="POST" action="/card">
+    <form method="POST" action="/cards">
       @csrf
 {{-- <div class="form-group row">
   <h3>Add New Card</h3>
@@ -36,6 +36,20 @@
             <input id="card_number" type="text" class="form-control @error('card_number') is-invalid @enderror" name="card_number" value="{{ old('card_number') }}" autocomplete="card_number" autofocus>
 
             @error('card_number')
+                <div class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </div>
+            @enderror
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="cvv" class="col-md-4 col-form-label text-md-right">Card CVV</label>
+
+        <div class="col-md-6">
+            <input id="cvv" type="text" class="form-control @error('cvv') is-invalid @enderror" name="cvv" value="{{ old('cvv') }}" autocomplete="cvv" autofocus>
+
+            @error('cvv')
                 <div class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </div>
