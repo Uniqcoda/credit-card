@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone', 12);
             $table->string('dob');
             $table->enum('role', array('customer', 'admin'))->default('customer');
-            $table->boolean('isBlocked')->default(false);
+            $table->boolean('is_blocked')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

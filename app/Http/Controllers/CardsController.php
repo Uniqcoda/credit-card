@@ -36,7 +36,7 @@ class CardsController extends Controller
     public function show(){
         $user = Auth::user();
         $cards = Card::where('user_id', $user->id)->get();
-
+        
         return view('cards.show', compact('cards'));
 
     }
