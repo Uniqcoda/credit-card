@@ -89,6 +89,7 @@
         </thead>
         <tbody>
           @foreach ($cards as $card)
+          @if ($card->is_deleted)              
           <tr>
             <th scope="row">{{ $loop->iteration }}
           </th>
@@ -97,12 +98,9 @@
             <td>User</td>
             <td>{{$card->expire_at}}</td>
             <td>{{$card->created_at}}</td>
-            @if ($card->is_deleted)
             <td class="text-danger">Deleted</td>
-            @else
-            <td class="text-success">Not Deleted</td>
-            @endif
           </tr>
+          @endif
           @endforeach
         </tbody>
       </table>
@@ -166,25 +164,19 @@
                               </thead>
                               <tbody>
                                 @foreach ($users as $user)
-                                <tr>
+                                @if ($user->is_blocked)             <tr>
                                   <th scope="row">{{ $loop->iteration }}
                                 </th>
                                 <td>{{$user->first_name}}</td>
                                   <td>{{$user->last_name}}</td>
                                   <td>{{$user->email}}</td>
                                   <td>{{$user->created_at}}</td>
-                                  @if ($user->is_blocked)
                                   <td>Blocked</td>
                                   <td>
                                   <button class="btn btn-primary btn-sm">Unblock</button>
                                 </td>
-                                  @else
-                                  <td>Not Blocked</td>
-                                  <td> 
-                                  <button class="btn btn-danger btn-sm">Block</button>
-                                </td>
-                                  @endif
                                 </tr>
+                                @endif
                                 @endforeach
                               </tbody>
                             </table>
