@@ -19,9 +19,9 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.component('vue-button', require('./components/Button.vue').default);
-Vue.component('mail-button', require('./components/MailButton.vue'));
-Vue.component('block-button', require('./components/BlockButton.vue'));
+Vue.component('delete-button', require('./components/DeleteCardButton.vue').default);
+Vue.component('mail-button', require('./components/MailButton.vue').default);
+Vue.component('block-button', require('./components/BlockButton.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

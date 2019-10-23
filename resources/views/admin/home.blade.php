@@ -61,7 +61,10 @@
                   <td>{{$card->card_number}}</td>
                   <td>User</td>
                   <td>
-                   {{$card->dateDifference($card->expire_at)}}
+                    @php
+                        $diffence = $card->dateDifference($card->expire_at);
+                        echo($diffence)
+                    @endphp
                   </td>
                   <td>{{$card->dateDifference($card->created_at)}}</td>
                   @if ($card->is_deleted)
@@ -70,10 +73,10 @@
                   <td class="text-success">Not Deleted</td>
 
                   @endif
-                  @if ($card->dateDifference($card->expire_at) == 'today')
+                  @if ($diffence == 'today' && !$card->is_deleted)
                   <td>
-                  {{-- <mail-button :cardId="'{{$card->id}}'" :userId="'{{$card->user_id}}'"> --}}
-                      {{-- </mail-button> --}}
+                  <mail-button :diffence="'{{$diffence}}'" :card_id="'{{$card->id}}'" :user_id="'{{$card->user_id}}'">
+                    </mail-button>
                   </td>
                   @else
                   <td></td>
@@ -97,7 +100,6 @@
             <th scope="col">Expiry Date</th>
             <th scope="col">Added At</th>
             <th scope="col">Status </th>
-            <th scope="col">Send Mail </th>
           </tr>
         </thead>
         <tbody>
@@ -112,15 +114,6 @@
             <td>{{$card->dateDifference($card->expire_at)}}</td>
             <td>{{$card->dateDifference($card->created_at)}}</td>
             <td class="text-danger">Deleted</td>
-            @if ($card->dateDifference($card->expire_at) == 'today')
-            <td>
-                <button class="btn btn-danger btn-sm">
-                  Send
-                </button>
-            </td>
-            @else
-            <td></td>
-            @endif
           </tr>
           @endif
           @endforeach

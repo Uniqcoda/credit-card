@@ -27,7 +27,7 @@
                     <td>{{$card->card_number}}</td>
                     <td>{{$card->expire_at}}</td>
                     <td>
-                      <vue-button :brand="'{{$card->brand}}'" :number="'{{$card->card_number}}'" :id="'{{$card->id}}'" :card="'{{$card}}'"></vue-button>
+                      <delete-button :brand="'{{$card->brand}}'" :number="'{{$card->card_number}}'" :id="'{{$card->id}}'" :card="'{{$card}}'"></delete-button>
                     </td>
                   </tr>
                   @endforeach
