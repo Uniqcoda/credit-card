@@ -3,13 +3,16 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
-            <table class="table table-hover">
+        <div class=" col-md-10">
+          <div>
+            <h3>My Cards</h3>
+          </div>
+            <table class="border table table-hover">
                 <thead>
                   <tr>
                     <th scope="col">S/N</th>
                     <th scope="col">Brand</th>
-                    <th scope="col">Last 4</th>
+                    <th scope="col">Last 4 Digits</th>
                     <th scope="col">Expiry Date </th>
                     <th scope="col"> </th>
 
@@ -24,7 +27,7 @@
                     <td>{{$card->card_number}}</td>
                     <td>{{$card->expire_at}}</td>
                     <td>
-                      <vue-button :brand="'{{$card->brand}}'" :number="'{{$card->card_number}}'"></vue-button>
+                      <delete-button :brand="'{{$card->brand}}'" :number="'{{$card->card_number}}'" :id="'{{$card->id}}'" :card="'{{$card}}'"></delete-button>
                     </td>
                   </tr>
                   @endforeach

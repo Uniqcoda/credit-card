@@ -20,4 +20,13 @@ protected $fillable = [
     public function user(){
         return $this->belongsTo(User::class);
     }
+
+    public function dateDifference($date){
+        $day = new \Carbon\Carbon($date);
+        $now = \Carbon\Carbon::now();
+        $difference = ($day->diff($now)->days < 1)
+    ? 'today'
+    : $day->diffForHumans($now, \Carbon\CarbonInterface::DIFF_RELATIVE_TO_NOW);
+        return $difference;
+    }
 }

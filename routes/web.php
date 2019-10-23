@@ -17,8 +17,12 @@ Route::get('/', function () {
 
 Auth::routes(); 
 
-Route::get('/cards/create', 'CardsController@create');
-Route::post('/cards', 'CardsController@store');
+// card routes
+Route::get('/card', 'CardsController@create');
+Route::post('/card', 'CardsController@store');
 Route::get('/cards', 'CardsController@show');
+Route::post('/cards/{id}/delete', 'CardsController@edit');
+
+Route::post('/users/{id}/mail', 'MailsController@mail');
 
 Route::get('/home', 'HomeController@index')->name('home');

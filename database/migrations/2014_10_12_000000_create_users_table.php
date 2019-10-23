@@ -1,5 +1,5 @@
 <?php
-// trying to create enum for user type
+
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone', 12);
             $table->string('dob');
             $table->enum('role', array('customer', 'admin'))->default('customer');
+            $table->boolean('is_blocked')->default(false);
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

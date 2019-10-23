@@ -4,7 +4,7 @@
 <div class="container">
 <div class="row">
   <div class="col-8 offset-2">
-    <form method="POST" action="/cards">
+    <form method="POST" action="/card">
       @csrf
 {{-- <div class="form-group row">
   <h3>Add New Card</h3>
