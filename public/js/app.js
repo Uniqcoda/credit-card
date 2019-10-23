@@ -1876,11 +1876,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["brand", "number"],
-  mounted: function mounted() {// console.log("Button mounted.");
+  props: ["brand", "number", "id", "card"],
+  mounted: function mounted() {//
   },
   methods: {
-    deleteCard: function deleteCard() {// alert("Sure to delete?");
+    deleteCard: function deleteCard(card, id) {
+      axios.post("/cards/".concat(id, "/delete"), id).then(function (res) {
+        alert(res.data);
+        window.location.reload();
+      })["catch"](function (err) {
+        return console.log(err);
+      });
     }
   }
 });
@@ -37259,7 +37265,11 @@ var render = function() {
                   {
                     staticClass: "btn btn-primary btn-sm",
                     attrs: { type: "button" },
-                    on: { click: _vm.deleteCard }
+                    on: {
+                      click: function($event) {
+                        return _vm.deleteCard(_vm.card, _vm.id)
+                      }
+                    }
                   },
                   [_vm._v("OK")]
                 )

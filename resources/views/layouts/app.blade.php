@@ -50,7 +50,7 @@
                                 </li>
                             @endif
                         @else
-                             <li class="nav-item">
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ url('/cards') }}">View Cards</a> 
                             </li>
                             <li>

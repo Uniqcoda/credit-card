@@ -33,9 +33,17 @@ class CardsController extends Controller
         return redirect('/cards');
     }
 
+    public function edit(Request $request, $id){
+        $card = Card::find($id);
+        $card->is_deleted = true;
+        $card->save();
+        
+        return ($card->brand . ' ' . $card->card_number . ' was successfully deleted');
+    }
+
     public function show(){
         $user = Auth::user();
-        $cards = Card::where('user_id', $user->id)->get();
+        $cards = Card::where('user_id', $user->id)->where('is_deleted', false)->get();
         
         return view('cards.show', compact('cards'));
 

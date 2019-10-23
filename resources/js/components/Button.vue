@@ -27,7 +27,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary btn-sm" @click="deleteCard">OK</button>
+            <button type="button" class="btn btn-primary btn-sm" @click="deleteCard(card, id)">OK</button>
           </div>
         </div>
       </div>
@@ -37,13 +37,19 @@
 
 <script>
 export default {
-  props: ["brand", "number"],
+  props: ["brand", "number", "id", "card"],
   mounted() {
-    // console.log("Button mounted.");
+    //
   },
   methods: {
-    deleteCard() {
-      // alert("Sure to delete?");
+    deleteCard(card, id) {
+      axios
+        .post(`/cards/${id}/delete`, id)
+        .then(res => {
+          alert(res.data);
+          window.location.reload();
+        })
+        .catch(err => console.log(err));
     }
   }
 };

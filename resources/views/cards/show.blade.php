@@ -20,7 +20,6 @@
                 </thead>
                 <tbody>
                   @foreach ($cards as $card)
-                  @if (!$card->is_deleted)
                   <tr>
                     <th scope="row">{{ $loop->iteration }}
                   </th>
@@ -28,10 +27,9 @@
                     <td>{{$card->card_number}}</td>
                     <td>{{$card->expire_at}}</td>
                     <td>
-                      <vue-button :brand="'{{$card->brand}}'" :number="'{{$card->card_number}}'"></vue-button>
+                      <vue-button :brand="'{{$card->brand}}'" :number="'{{$card->card_number}}'" :id="'{{$card->id}}'" :card="'{{$card}}'"></vue-button>
                     </td>
                   </tr>
-                  @endif
                   @endforeach
                 </tbody>
               </table>
