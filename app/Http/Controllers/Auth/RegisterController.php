@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\Wallet;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -49,24 +50,39 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'phone' => ['required', 'string', 'max:12'],
+            'dob' => ['required'],
         ]);
     }
 
     /**
      * Create a new user instance after a valid registration.
-     *
+     * Also create a new wallet for user
      * @param  array  $data
      * @return \App\User
+     * @return \App\Wallet
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        $user = User::create([
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'phone' => $data['phone'],
+            'dob' => $data['dob'],
+       
         ]);
+
+        $wallet = Wallet::create([
+            'user_id' => $user->id,
+            'balance' => 0
+        ]);
+
+        return $user;
     }
 }
