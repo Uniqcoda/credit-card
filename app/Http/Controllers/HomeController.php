@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Card;
 use Auth;
 
 class HomeController extends Controller
@@ -28,7 +29,8 @@ class HomeController extends Controller
         $user = Auth::user();
         if ($user->role == 'admin') {
             $users = User::get();
-            return view('admin.home', compact('users'));
+            $cards = Card::get();
+            return view('admin.home', compact('cards','users'));
         }
         return view('home');
     }
