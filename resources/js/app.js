@@ -20,6 +20,8 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('vue-button', require('./components/Button.vue').default);
+Vue.component('mail-button', require('./components/MailButton.vue'));
+Vue.component('block-button', require('./components/BlockButton.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

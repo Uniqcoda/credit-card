@@ -36,9 +36,9 @@
     </ul>
 
       <div class="tab-content">
-  {{-- Table of all cards --}}
 
-  <div class="tab-pane active" id="tab1">
+        {{-- Table of all cards --}}
+        <div class="tab-pane active" id="tab1">
             <table class="border table table-hover">
               <thead>
                 <tr>
@@ -47,9 +47,9 @@
                   <th scope="col">Last 4 Digits</th>
                   <th scope="col">User</th>
                   <th scope="col">Expiry At</th>
-                  <th scope="col">Date Added </th>
+                  <th scope="col">Added At</th>
                   <th scope="col">Status </th>
-                  {{-- <th scope="col">Send Mail </th> --}}
+                  <th scope="col">Send Mail </th>
                 </tr>
               </thead>
               <tbody>
@@ -61,20 +61,22 @@
                   <td>{{$card->card_number}}</td>
                   <td>User</td>
                   <td>
-                  @php
-                      $created = new \Carbon\Carbon($card->expire_at);
-                      $now = \Carbon\Carbon::now();
-                      $difference = ($created->diff($now)->days < 1)
-    ? 'today'
-    : $created->diffForHumans($now, \Carbon\CarbonInterface::DIFF_RELATIVE_TO_NOW);
-                      echo($difference);
-                  @endphp  
+                   {{$card->dateDifference($card->expire_at)}}
                   </td>
-                  <td>{{$card->created_at}}</td>
+                  <td>{{$card->dateDifference($card->created_at)}}</td>
                   @if ($card->is_deleted)
                   <td class="text-danger">Deleted</td>
                   @else
                   <td class="text-success">Not Deleted</td>
+
+                  @endif
+                  @if ($card->dateDifference($card->expire_at) == 'today')
+                  <td>
+                  {{-- <mail-button :cardId="'{{$card->id}}'" :userId="'{{$card->user_id}}'"> --}}
+                      {{-- </mail-button> --}}
+                  </td>
+                  @else
+                  <td></td>
                   @endif
                 </tr>
                 @endforeach
@@ -93,8 +95,9 @@
             <th scope="col">Last 4 Digits</th>
             <th scope="col">User</th>
             <th scope="col">Expiry Date</th>
-            <th scope="col">Date Added </th>
+            <th scope="col">Added At</th>
             <th scope="col">Status </th>
+            <th scope="col">Send Mail </th>
           </tr>
         </thead>
         <tbody>
@@ -106,9 +109,18 @@
           <td>{{$card->brand}}</td>
             <td>{{$card->card_number}}</td>
             <td>User</td>
-            <td>{{$card->expire_at}}</td>
-            <td>{{$card->created_at}}</td>
+            <td>{{$card->dateDifference($card->expire_at)}}</td>
+            <td>{{$card->dateDifference($card->created_at)}}</td>
             <td class="text-danger">Deleted</td>
+            @if ($card->dateDifference($card->expire_at) == 'today')
+            <td>
+                <button class="btn btn-danger btn-sm">
+                  Send
+                </button>
+            </td>
+            @else
+            <td></td>
+            @endif
           </tr>
           @endif
           @endforeach
