@@ -47,10 +47,8 @@ export default {
       axios
         .post(`/users/${user_id}/mail`, user_id)
         .then(res => {
-          console.log(res);
-
-          // alert(res.data);
-          // window.location.reload();
+          alert(res.data.message);
+          window.location.reload();
         })
         .catch(err => console.log(err));
     }

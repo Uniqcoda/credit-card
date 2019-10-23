@@ -23,6 +23,6 @@ Route::post('/card', 'CardsController@store');
 Route::get('/cards', 'CardsController@show');
 Route::post('/cards/{id}/delete', 'CardsController@edit');
 
-Route::post('/users/{id}/mail', 'UsersController@mail');
+Route::post('/users/{id}/mail', 'MailsController@mail');
 
 Route::get('/home', 'HomeController@index')->name('home');

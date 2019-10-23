@@ -1947,8 +1947,8 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     sendMail: function sendMail(difference, card_id, user_id) {
       axios.post("/users/".concat(user_id, "/mail"), user_id).then(function (res) {
-        console.log(res); // alert(res.data);
-        // window.location.reload();
+        alert(res.data.message);
+        window.location.reload();
       })["catch"](function (err) {
         return console.log(err);
       });
