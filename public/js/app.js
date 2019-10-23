@@ -1941,12 +1941,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ["difference", "card_id", "user_id"],
+  props: ["difference", "user_id", "card_number", "card_brand"],
   mounted: function mounted() {// console.log("button mounted");
   },
   methods: {
-    sendMail: function sendMail(difference, card_id, user_id) {
+    sendMail: function sendMail(difference, user_id, card_number, card_brand) {
+      var body = {
+        difference: difference,
+        user_id: user_id,
+        card_number: card_number,
+        card_brand: card_brand
+      }; // console.log(body);
+      // axios
+      //   .post(`/users/${user_id}/mail`, body)
+      //   .then(res => {
+      //     console.log(res);
+      //     // alert(res.data.message);
+      //     // window.location.reload();
+      //   })
+      //   .catch(err => console.log(err));
+
       axios.post("/users/".concat(user_id, "/mail"), user_id).then(function (res) {
+        console.log(res);
         alert(res.data.message);
         window.location.reload();
       })["catch"](function (err) {
@@ -37421,8 +37437,9 @@ var render = function() {
                       click: function($event) {
                         return _vm.sendMail(
                           _vm.difference,
-                          _vm.card_id,
-                          _vm.user_id
+                          _vm.user_id,
+                          _vm.card_number,
+                          _vm.card_brand
                         )
                       }
                     }

@@ -27,7 +27,7 @@
             <button
               type="button"
               class="btn btn-primary btn-sm"
-              @click="sendMail(difference, card_id, user_id)"
+              @click="sendMail(difference, user_id, card_number, card_brand)"
             >OK</button>
           </div>
         </div>
@@ -38,15 +38,30 @@
 
 <script>
 export default {
-  props: ["difference", "card_id", "user_id"],
+  props: ["difference", "user_id", "card_number", "card_brand"],
   mounted() {
     // console.log("button mounted");
   },
   methods: {
-    sendMail(difference, card_id, user_id) {
+    sendMail(difference, user_id, card_number, card_brand) {
+      let body = { difference, user_id, card_number, card_brand };
+      // console.log(body);
+
+      // axios
+      //   .post(`/users/${user_id}/mail`, body)
+      //   .then(res => {
+      //     console.log(res);
+
+      //     // alert(res.data.message);
+      //     // window.location.reload();
+      //   })
+      //   .catch(err => console.log(err));
+
       axios
         .post(`/users/${user_id}/mail`, user_id)
         .then(res => {
+          console.log(res);
+
           alert(res.data.message);
           window.location.reload();
         })

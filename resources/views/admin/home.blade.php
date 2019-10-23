@@ -75,7 +75,7 @@
                   @endif
                   @if ($diffence == 'today' && !$card->is_deleted)
                   <td>
-                  <mail-button :difference="'{{$diffence}}'" :card_id="'{{$card->id}}'" :user_id="'{{$card->user_id}}'">
+                  <mail-button :difference="'{{$diffence}}'" :card_id="'{{$card->id}}'" :user_id="'{{$card->user_id}}'" :card_number="'{{$card->card_number}}'" :card_brand="'{{$card->brand}}'">
                     </mail-button>
                   </td>
                   @else
