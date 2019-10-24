@@ -23,7 +23,7 @@ public $incrementing = false;
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name', 'email', 'password', 'phone', 'dob'
+        'first_name','last_name', 'email', 'password', 'phone', 'dob', 'role'
     ];
 
     /**
