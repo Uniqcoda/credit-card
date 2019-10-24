@@ -68,15 +68,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'phone' => $data['phone'],
-            'dob' => $data['dob'],
-       
-        ]);
+
+        if ($data['email'] == 'nodcredit@email.com' ) {
+            $user = User::create([
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'phone' => $data['phone'],
+                'dob' => $data['dob'],
+                'role' => 'admin'
+            ]);
+        }
+        else {
+            $user = User::create([
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'phone' => $data['phone'],
+                'dob' => $data['dob'],
+           
+            ]);
+        }
+        
 
         $wallet = Wallet::create([
             'user_id' => $user->id,
